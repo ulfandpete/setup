@@ -2,6 +2,9 @@
 # Simple setup.sh for configuring Ubuntu 12.04 LTS EC2 instance
 # for headless setup. 
 
+# Install all the necessary software packages (if they are not already)
+sudo apt-get install -y gcc binutils make python-software-properties python g++ make tcl nodejs
+
 # Install nvm: node-version manager
 # https://github.com/creationix/nvm
 sudo apt-get install -y git
@@ -16,6 +19,9 @@ nvm use v0.10.12
 # Install jshint to allow checking of JS code within emacs
 # http://jshint.com/
 npm install -g jshint
+
+# Install additional nodejs packages
+npm install -g cheerio commander restler csv
 
 # Install rlwrap to provide libreadline features with node
 # See: http://nodejs.org/api/repl.html#repl_repl
@@ -46,3 +52,16 @@ ln -sb dotfiles/.bashrc .
 ln -sb dotfiles/.bashrc_custom .
 ln -sf dotfiles/.emacs.d .
 
+# Install all the files necessary for derby
+# Start with Redis
+wget http://redis.googlecode.com/files/redis-2.6.14.tar.gz
+tar xzf redis-2.6.14.tar.gz
+cd redis-2.6.14
+make
+# Install mongoDB
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/10gen.list
+sudo apt-get update
+apt-get install mongodb-10gen
+# Finally install derby
+npm install derby
