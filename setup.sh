@@ -3,7 +3,7 @@
 # for headless setup. 
 
 # Install all the necessary software packages (if they are not already)
-sudo apt-get install -y gcc binutils make python-software-properties python g++ make tcl
+sudo apt-get install -y gcc binutils make python-software-properties python g++ make tcl emacs build-essential curl apt-file software-properties-common
 
 # Install nodejs
 sudo add-apt-repository ppa:chris-lea/node.js
@@ -70,3 +70,18 @@ sudo apt-get update
 apt-get install mongodb-10gen
 # Finally install derby
 npm install derby
+
+# Configure basic github settings
+export USERNAME=ulfandpete
+export EMAIL=mail@ulfpetersen.com
+git config --global user.name $USERNAME
+git config --global user.email $EMAIL
+git config --global credential.helper cache
+git config credential.helper 'cache --timeout=3600'
+
+# create a key for heroku and install it
+ssh-keygen -t rsa
+ssh-keygen -t rsa -C $EMAIL
+cat ~/.ssh/id_rsa.pub
+heroku login
+heroku keys:add
