@@ -1,21 +1,21 @@
 setup.git
 =========
-Clone and run this on a new EC2 instance running Ubuntu 12.04.2 LTS to
-configure both the machine and your individual development environment as
-follows:
+Clone and install this to prepare a new ubuntu machine to 
 
-```sh
-cd $HOME
-sudo apt-get install -y git-core
-git clone https://github.com/startup-class/setup.git
-./setup/setup.sh   
-```
+git clone https://github.com/ulfandpete/setup
+cd setup
+./basic.sh
+./setup.sh
+./startup-class.sh
+./derby.sh
+./meteor.sh
 
-See also http://github.com/startup-class/dotfiles and
-[Startup Engineering Video Lectures 4a/4b](https://class.coursera.org/startup-001/lecture/index)
-for more details.
+---
+or
+---
 
-
-
-
-
+curl https://raw.github.com/ulfandpete/setup/master/basic.sh | bash
+curl https://raw.github.com/ulfandpete/setup/master/setup.sh | bash
+curl https://raw.github.com/ulfandpete/setup/master/startup-class.sh | bash
+curl https://raw.github.com/ulfandpete/setup/master/derby.sh | bash
+curl https://raw.github.com/ulfandpete/setup/master/meteor.sh | bash
