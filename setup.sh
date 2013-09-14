@@ -20,10 +20,10 @@ nvm use v0.10.12
 
 # Install jshint to allow checking of JS code within emacs
 # http://jshint.com/
-npm install -g jshint
+sudo npm install -g jshint
 
 # Install additional nodejs packages
-npm install -g cheerio commander restler csv
+sudo npm install -g cheerio commander restler csv
 
 # Install Heroku toolbelt
 # https://toolbelt.heroku.com/debian
