@@ -43,3 +43,39 @@ ssh-keygen -t rsa -C $EMAIL
 cat ~/.ssh/id_rsa.pub
 heroku login
 heroku keys:add
+
+# install python and configure it in emacs (which is hopefully installed)
+sudo apt-get install -y ipython-notebook
+cd ~
+wget https://launchpad.net/python-mode/trunk/6.1.2/+download/python-mode.el-6.1.2.tar.gz
+tar xzvf python-mode.el-6.1.2.tar.gz
+sudo mv python-mode.el-6.1.2 ~/.emacs.d
+rm -v python-mode.el-6.1.2.tar.gz
+sudo tee -a ~/.emacs.d/init.el <<EOF
+;; ---------------------------------
+;; -- Python mode voconfiguration --
+;; ---------------------------------
+;; not really sure what I am doing here
+
+; python-mode
+(setq py-install-directory "~/.emacs.d/python-mode.el-6.1.2")
+(add-to-list 'load-path py-install-directory)
+(require 'python-mode)
+(when (featurep 'python) (unload-feature 'python t))
+
+; use IPython
+(setq-default py-shell-name "ipython")
+(setq-default py-which-bufname "IPython")
+; use the wx backend, for both mayavi and matplotlib
+(setq py-python-command-args
+  '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
+(setq py-force-py-shell-name-p t)
+
+; switch to the interpreter after executing code
+(setq py-shell-switch-buffers-on-execute-p t)
+(setq py-switch-buffers-on-execute-p t)
+; don't split windows
+(setq py-split-windows-on-execute-p nil)
+; try to automagically figure out indentation
+(setq py-smart-indentation t)
+EOF
