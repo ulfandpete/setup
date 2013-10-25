@@ -2,7 +2,7 @@ setup.git
 =========
 Clone and install this to prepare a new ubuntu machine to 
 
-git clone https://github.com/ulfandpete/setup
+git clone https://github.com/ulfandpete/setup<br>
 ./setup/basic.sh
 
 ---
