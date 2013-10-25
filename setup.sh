@@ -2,7 +2,7 @@
 # More advanced files for ubuntu server setup
 
 # Install software packages for development (if they are not already)
-sudo apt-get install -y gcc binutils python-software-properties python g++ tcl build-essential software-properties-common
+sudo apt-get install -y gcc binutils python g++ tcl build-essential software-properties-common
 
 # Install nodejs
 sudo add-apt-repository ppa:chris-lea/node.js
