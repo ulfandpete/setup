@@ -7,7 +7,7 @@ sudo apt-get update
 sudo apt-get upgrade
 
 # Then install the most basic software packages
-sudo apt-get install -y curl ssh apt-file make git
+sudo apt-get install -y curl ssh apt-file make git python-software-properties
 
 # Install emacs24
 # https://launchpad.net/~cassou/+archive/emacs
