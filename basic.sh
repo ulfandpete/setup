@@ -16,28 +16,22 @@ sudo apt-get -qq update
 sudo apt-get install -y emacs24-nox emacs24-el emacs24-common-non-dfsg
 
 # Ask whether to continue with the next setup-files or not
-read -p "Basic setup complete. Do you want to continue? " -n 1 -r
+read -p "Basic setup complete. Do you want to install node and heroku? " -n 1 -r
 echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]|[Yy]es$ ]]
 then
-    curl https://raw.github.com/ulfandpete/setup/master/setup.sh | bash
-    
-    read -p "Install startup-class files? " -n 1 -r
-    echo    # (optional) move to a new line
-    if [[ $REPLY =~ ^[Yy]|[Yy]es$ ]]
-    then
-      curl https://raw.github.com/ulfandpete/setup/master/startup-class.sh | bash
-    fi
-    read -p "Install derby? " -n 1 -r
-    echo    # (optional) move to a new line
-    if [[ $REPLY =~ ^[Yy]|[Yy]es$ ]]
-    then
-      curl https://raw.github.com/ulfandpete/setup/master/derby.sh | bash
-    fi
-    read -p "Install meteor? " -n 1 -r
-    echo    # (optional) move to a new line
-    if [[ $REPLY =~ ^[Yy]|[Yy]es$ ]]
-    then
-      curl https://raw.github.com/ulfandpete/setup/master/meteor.sh | bash
-    fi
+  # Install software packages for development (if they are not already)
+  sudo apt-get install -y gcc binutils python g++ tcl build-essential
+
+  # Install nodejs
+  sudo add-apt-repository -y ppa:chris-lea/node.js
+  sudo apt-get update
+  sudo apt-get install -y nodejs
+
+  # Install nvm: node-version manager
+  # https://github.com/creationix/nvm
+  curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+  read -p "Press a button to exit the console and then relogon. You can execute setup.sh to continue."
+  wget https://raw.github.com/ulfandpete/setup/master/setup.sh ~
+  exit
 fi
