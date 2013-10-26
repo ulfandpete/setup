@@ -87,4 +87,5 @@ ln -sf dotfiles/.emacs.d .
 
 read -p "The system needs to restart. Reconnect and execute setup2.sh to continue."
 wget https://raw.github.com/ulfandpete/setup/master/setup2.sh
+sudo chmod 777 setup2.sh
 sudo shutdown -r now
