@@ -7,7 +7,19 @@ then
   cd ~
   git clone https://github.com/ulfandpete/bitstarter-leaderboard.git
   cd bitstarter-leaderboard
-  sudo ./setup-ssjs.sh
+  echo -e "\n\nNOW ENTER YOUR HEROKU PASSWORD"
+
+  # Set up heroku.
+  # - devcenter.heroku.com/articles/config-vars
+  # - devcenter.heroku.com/articles/heroku-postgresql
+  heroku login
+  heroku create
+  heroku addons:add heroku-postgresql:dev
+  heroku pg:promote `heroku config  | grep HEROKU_POSTGRESQL | cut -f1 -d':'`
+  heroku plugins:install git://github.com/ddollar/heroku-config.git
+  
+  # Setup the postgresql database
+  sudo ./pgsetup.sh
 fi
 
 # Installs derby
