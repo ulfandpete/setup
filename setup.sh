@@ -1,17 +1,5 @@
 #!/bin/bash
-# More advanced files for ubuntu server setup
-
-# Install software packages for development (if they are not already)
-sudo apt-get install -y gcc binutils python g++ tcl build-essential
-
-# Install nodejs
-sudo add-apt-repository ppa:chris-lea/node.js
-sudo apt-get update
-sudo apt-get install -y nodejs
-
-# Install nvm: node-version manager
-# https://github.com/creationix/nvm
-curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+# Continues basic.sh setup file
 
 # Load nvm and install latest production node
 source $HOME/.nvm/nvm.sh
@@ -21,6 +9,10 @@ nvm use v0.10.12
 # Install jshint to allow checking of JS code within emacs
 # http://jshint.com/
 sudo npm install -g jshint
+
+# Install rlwrap to provide libreadline features with node
+# See: http://nodejs.org/api/repl.html#repl_repl
+sudo apt-get install -y rlwrap
 
 # Install additional nodejs packages
 sudo npm install -g cheerio commander restler csv
@@ -35,7 +27,6 @@ export EMAIL=mail@ulfpetersen.com
 git config --global user.name $USERNAME
 git config --global user.email $EMAIL
 git config --global credential.helper cache
-git config credential.helper 'cache --timeout=3600'
 
 # create a key for heroku and install it
 ssh-keygen -t rsa
@@ -55,7 +46,6 @@ sudo tee -a ~/.emacs.d/init.el <<EOF
 ;; ---------------------------------
 ;; -- Python mode voconfiguration --
 ;; ---------------------------------
-;; not really sure what I am doing here
 
 ; python-mode
 (setq py-install-directory "~/.emacs.d/python-mode.el-6.1.2")
@@ -79,3 +69,22 @@ sudo tee -a ~/.emacs.d/init.el <<EOF
 ; try to automagically figure out indentation
 (setq py-smart-indentation t)
 EOF
+
+# git pull and install dotfiles as well
+cd $HOME
+if [ -d ./dotfiles/ ]; then
+    mv dotfiles dotfiles.old
+fi
+if [ -d .emacs.d/ ]; then
+    mv .emacs.d .emacs.d~
+fi
+git clone https://github.com/startup-class/dotfiles.git
+ln -sb dotfiles/.screenrc .
+ln -sb dotfiles/.bash_profile .
+ln -sb dotfiles/.bashrc .
+ln -sb dotfiles/.bashrc_custom .
+ln -sf dotfiles/.emacs.d .
+
+read -p "The system needs to restart. Reconnect and execute setup2.sh to continue."
+wget https://raw.github.com/ulfandpete/setup/master/setup.sh ~
+sudo shutdown -r now
