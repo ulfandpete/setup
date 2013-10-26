@@ -33,5 +33,6 @@ then
   curl https://raw.github.com/creationix/nvm/master/install.sh | sh
   read -p "Press a button to exit the console and then relogon. You can execute setup.sh to continue."
   wget https://raw.github.com/ulfandpete/setup/master/setup.sh ~
+  sudo chmod 777 setup.sh
   exit
 fi
