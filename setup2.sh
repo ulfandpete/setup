@@ -1,12 +1,16 @@
-!/bin/bash
+#!/bin/bash
 # Installs my branch of the bitstarter app
+read -p "Install bitstarter app? " -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]|[Yy]es$ ]]
+then
+  cd ~
+  git clone https://github.com/ulfandpete/bitstarter-leaderboard.git
+  cd bitstarter-leaderboard
+  sudo ./setup-ssjs.sh
+fi
 
-cd ~
-git clone https://github.com/ulfandpete/bitstarter-leaderboard.git
-cd bitstarter-leaderboard
-./setup-ssjs.sh
-
-# Finally check whether the user wants to install derby or meteor
+# Installs derby
 read -p "Install derby? " -n 1 -r
 echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]|[Yy]es$ ]]
@@ -14,6 +18,7 @@ then
   curl https://raw.github.com/ulfandpete/setup/master/derby.sh | bash
 fi
 
+# Installs meteor
 read -p "Install meteor? " -n 1 -r
 echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]|[Yy]es$ ]]
