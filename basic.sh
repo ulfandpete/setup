@@ -37,5 +37,6 @@ then
   wget https://raw.github.com/ulfandpete/setup/master/setup.sh
   sudo chmod 777 setup.sh
   read -p "Press a button to restart the VM. You can execute setup.sh to continue."
+  rm basic.sh
   sudo shutdown -r now
 fi
