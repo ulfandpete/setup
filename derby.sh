@@ -14,4 +14,4 @@ sudo apt-get update
 sudo apt-get install mongodb-10gen
 
 # Finally install derby
-npm install -g derby
+sudo npm install -g derby
