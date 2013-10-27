@@ -16,10 +16,10 @@ sudo apt-get -qq update
 sudo apt-get install -y emacs24-nox emacs24-el emacs24-common-non-dfsg
 
 # Ask whether to continue with the next setup-files or not
-read -p "Basic setup complete. Do you want to install node and heroku? " -n 1 -r
-echo    # (optional) move to a new line
+read -p "Basic setup complete. Do you want to install node and heroku? " -n1
 if [[ $REPLY =~ ^[Yy]|[Yy]es$ ]]
 then
+  echo
   # Install software packages for development (if they are not already)
   sudo apt-get install -y gcc binutils python g++ tcl build-essential
 
