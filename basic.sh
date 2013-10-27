@@ -34,7 +34,7 @@ then
   sudo chmod 777 install.sh
   ./install.sh
   rm install.sh
-  wget https://raw.github.com/ulfandpete/setup/master/setup.sh ~
+  wget https://raw.github.com/ulfandpete/setup/master/setup.sh
   sudo chmod 777 setup.sh
   read -p "Press a button to restart the VM. You can execute setup.sh to continue."
   sudo shutdown -r now
