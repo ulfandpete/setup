@@ -38,5 +38,4 @@ then
   sudo curl https://raw.github.com/ulfandpete/setup/master/meteor.sh | bash
 fi
 
-rm --force setup.sh
 rm --force setup2.sh
