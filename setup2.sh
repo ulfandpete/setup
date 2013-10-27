@@ -2,7 +2,7 @@
 # Installs my branch of the bitstarter app
 read -p "Install bitstarter app? " -n 1 -r
 echo    # (optional) move to a new line
-if [[ $REPLY =~ ^[Yy]|[Yy]es$ ]]
+if [[ $REPLY =~ ^[Yy]$ ]]
 then
   cd ~
   git clone https://github.com/ulfandpete/bitstarter-leaderboard.git
@@ -25,7 +25,7 @@ fi
 # Installs derby
 read -p "Install derby? " -n 1 -r
 echo    # (optional) move to a new line
-if [[ $REPLY =~ ^[Yy]|[Yy]es$ ]]
+if [[ $REPLY =~ ^[Yy]$ ]]
 then
   sudo curl https://raw.github.com/ulfandpete/setup/master/derby.sh | bash
 fi
@@ -33,7 +33,7 @@ fi
 # Installs meteor
 read -p "Install meteor? " -n 1 -r
 echo    # (optional) move to a new line
-if [[ $REPLY =~ ^[Yy]|[Yy]es$ ]]
+if [[ $REPLY =~ ^[Yy]$ ]]
 then
   sudo curl https://raw.github.com/ulfandpete/setup/master/meteor.sh | bash
 fi
