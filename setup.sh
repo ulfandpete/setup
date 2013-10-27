@@ -85,7 +85,8 @@ ln -sb dotfiles/.bashrc .
 ln -sb dotfiles/.bashrc_custom .
 ln -sf dotfiles/.emacs.d .
 
-read -p "The system needs to restart. Reconnect and execute setup2.sh to continue."
 wget https://raw.github.com/ulfandpete/setup/master/setup2.sh
 sudo chmod 777 setup2.sh
+rm --force setup.sh
+read -p "The system needs to restart. Reconnect and execute setup2.sh to continue."
 sudo shutdown -r now
