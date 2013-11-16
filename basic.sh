@@ -4,7 +4,7 @@
 
 # First run an update on all installed software
 sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get upgrade --yes
 
 # Then install the most basic software packages
 sudo apt-get install -y curl ssh apt-file make git python-software-properties software-properties-common
